@@ -167,18 +167,25 @@
         /* ==================== About 섹션 ==================== */
         .about-container {
             display: flex;
-            gap: 50px;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .about-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         .about-image {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid var(--neon-pink);
+            border: 4px solid var(--neon-pink);
             box-shadow: 
                 0 0 20px var(--neon-pink),
                 0 0 40px var(--neon-pink);
@@ -202,9 +209,30 @@
             object-fit: cover;
         }
 
+        .about-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin: 10px 0 5px 0;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .about-role {
+            font-size: 1.3rem;
+            color: var(--neon-cyan);
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .about-location {
+            font-size: 1.1rem;
+            color: var(--neon-yellow);
+            margin: 5px 0 0 0;
+        }
+
         .about-text {
-            flex: 1;
-            min-width: 300px;
+            max-width: 800px;
+            margin-top: 20px;
         }
 
         .about-text p {
@@ -215,71 +243,38 @@
         }
 
         /* ==================== Skills 섹션 ==================== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 50px auto 0;
         }
 
-        .skill-card {
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 240, 255, 0.1));
-            padding: 30px;
-            border-radius: 15px;
+        .skill-tag {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 240, 255, 0.2));
             border: 2px solid var(--neon-cyan);
-            text-align: center;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
+            border-radius: 50px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 0 0 5px var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                transparent, 
-                var(--neon-pink), 
-                transparent 30%
-            );
-            animation: rotateBorder 4s linear infinite;
-        }
-
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .skill-card::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            background: var(--bg-dark);
-            border-radius: 13px;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-20px) rotate(5deg) scale(1.05);
-            box-shadow: 0 10px 30px var(--neon-pink);
-        }
-
-        .skill-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .skill-name {
-            font-size: 1.3rem;
-            color: var(--neon-yellow);
-            text-shadow: 0 0 5px var(--neon-yellow);
+        .skill-tag:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(0, 240, 255, 0.4));
+            border-color: var(--neon-pink);
+            box-shadow: 
+                0 0 25px var(--neon-pink),
+                0 0 50px var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-pink);
         }
 
         /* ==================== Projects 섹션 ==================== */
@@ -452,22 +447,30 @@
                 font-size: 2rem;
             }
 
-            .about-container {
-                flex-direction: column;
+            .about-image {
+                width: 180px;
+                height: 180px;
             }
 
-            .about-image {
-                width: 250px;
-                height: 250px;
+            .about-name {
+                font-size: 2rem;
+            }
+
+            .about-role {
+                font-size: 1.1rem;
             }
 
             section {
                 padding: 60px 20px;
             }
 
-            .projects-grid,
-            .skills-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .skill-tag {
+                font-size: 1rem;
+                padding: 12px 24px;
             }
         }
 
@@ -481,14 +484,27 @@
             }
 
             .about-image {
-                width: 200px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-name {
+                font-size: 1.8rem;
+            }
+
+            .about-role {
+                font-size: 1rem;
             }
 
             .social-link {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
+            }
+
+            .skill-tag {
+                font-size: 0.9rem;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -510,13 +526,18 @@
     <section id="about">
         <h2>About Me</h2>
         <div class="about-container">
-            <div class="about-image">
-                <img src="https://via.placeholder.com/300" alt="Jeongho Shin">
+            <div class="about-profile">
+                <div class="about-image">
+                    <img src="images/profile.jpg" alt="Jeongho Shin">
+                </div>
+                <h3 class="about-name">신정호</h3>
+                <p class="about-role">UX/UI Designer & Educator</p>
+                <p class="about-location">📍 Seoul, Korea</p>
             </div>
             <div class="about-text">
-                <p>안녕하세요! UX/UI 디자이너 신정호입니다.</p>
-                <p>사용자의 경험을 중심에 두고, 직관적이고 아름다운 인터페이스를 디자인합니다. 새로운 기술과 트렌드를 탐구하며, 사용자에게 의미 있는 가치를 전달하는 디자인을 추구합니다.</p>
-                <p>끊임없는 학습과 실험을 통해 더 나은 디자이너로 성장하고 있습니다.</p>
+                <p>안녕하세요! 사용자 경험을 디자인하는 신정호입니다.</p>
+                <p>10년 이상의 실무 경험을 바탕으로 매년 200명 이상의 디자이너를 교육해왔습니다. 복잡한 문제를 간단하고 아름답게 해결하는 것을 좋아합니다.</p>
+                <p>더 많은 사람들이 보다 좋은 환경에서 더 나은 삶을 살 수 있도록 돕고 싶습니다.</p>
             </div>
         </div>
     </section>
@@ -524,43 +545,13 @@
     <!-- Skills 섹션 -->
     <section id="skills">
         <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">🎨</div>
-                    <div class="skill-name">UI Design</div>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">✨</div>
-                    <div class="skill-name">UX Research</div>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">🖼️</div>
-                    <div class="skill-name">Figma</div>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">💎</div>
-                    <div class="skill-name">Adobe XD</div>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">🎭</div>
-                    <div class="skill-name">Prototyping</div>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-content">
-                    <div class="skill-icon">📱</div>
-                    <div class="skill-name">Mobile Design</div>
-                </div>
-            </div>
+        <div class="skills-tags">
+            <span class="skill-tag">UX/UI Design</span>
+            <span class="skill-tag">Design Thinking</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Sketch</span>
+            <span class="skill-tag">User Research</span>
+            <span class="skill-tag">Team Leadership</span>
         </div>
     </section>
 
@@ -675,15 +666,15 @@
             }
         });
 
-        // 스킬 카드 호버 시 랜덤 회전
-        document.querySelectorAll('.skill-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                const randomRotate = Math.random() * 20 - 10;
-                this.style.transform = `translateY(-20px) rotate(${randomRotate}deg) scale(1.05)`;
+        // 스킬 태그 동적 효과
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                const randomRotate = Math.random() * 10 - 5;
+                this.style.transform = `translateY(-5px) scale(1.1) rotate(${randomRotate}deg)`;
             });
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotate(0deg) scale(1)';
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
             });
         });
 
