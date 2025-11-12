@@ -122,6 +122,7 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
+            cursor: pointer;
         }
 
         .scroll-indicator::after {
@@ -167,17 +168,15 @@
         /* ==================== About 섹션 ==================== */
         .about-container {
             display: flex;
-            flex-direction: column;
+            gap: 50px;
             align-items: center;
-            gap: 40px;
-            text-align: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .about-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            text-align: center;
+            min-width: 300px;
         }
 
         .about-image {
@@ -185,22 +184,19 @@
             height: 200px;
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid var(--neon-pink);
+            border: 5px solid var(--neon-pink);
             box-shadow: 
                 0 0 20px var(--neon-pink),
                 0 0 40px var(--neon-pink);
             transition: transform 0.5s ease;
-            animation: rotate360 20s linear infinite;
-        }
-
-        @keyframes rotate360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            margin: 0 auto 20px;
         }
 
         .about-image:hover {
-            animation-play-state: paused;
             transform: scale(1.1);
+            box-shadow: 
+                0 0 30px var(--neon-cyan),
+                0 0 60px var(--neon-cyan);
         }
 
         .about-image img {
@@ -210,29 +206,28 @@
         }
 
         .about-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--text-light);
-            margin: 10px 0 5px 0;
-            text-shadow: 0 0 10px var(--neon-cyan);
+            font-size: 2rem;
+            color: var(--neon-yellow);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-yellow);
         }
 
         .about-role {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--neon-cyan);
-            margin: 0;
-            opacity: 0.9;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--neon-cyan);
         }
 
         .about-location {
             font-size: 1.1rem;
-            color: var(--neon-yellow);
-            margin: 5px 0 0 0;
+            color: #CCCCCC;
+            margin-bottom: 0;
         }
 
         .about-text {
-            max-width: 800px;
-            margin-top: 20px;
+            flex: 1;
+            min-width: 300px;
         }
 
         .about-text p {
@@ -246,41 +241,53 @@
         .skills-tags {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 20px;
-            max-width: 900px;
-            margin: 50px auto 0;
+            justify-content: center;
+            margin-top: 50px;
         }
 
         .skill-tag {
-            display: inline-block;
-            padding: 15px 30px;
             background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 240, 255, 0.2));
-            border: 2px solid var(--neon-cyan);
+            padding: 15px 30px;
             border-radius: 50px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-shadow: 0 0 5px var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            border: 2px solid var(--neon-cyan);
+            font-size: 1.2rem;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 5px var(--neon-yellow);
             transition: all 0.4s ease;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 0, 110, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
         }
 
         .skill-tag:hover {
             transform: translateY(-5px) scale(1.1);
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(0, 240, 255, 0.4));
+            box-shadow: 0 10px 30px var(--neon-pink);
             border-color: var(--neon-pink);
-            box-shadow: 
-                0 0 25px var(--neon-pink),
-                0 0 50px var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .skill-tag:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         /* ==================== Projects 섹션 ==================== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
@@ -307,6 +314,7 @@
             height: 250px;
             overflow: hidden;
             position: relative;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.3), rgba(0, 240, 255, 0.3));
         }
 
         .project-image img {
@@ -339,7 +347,7 @@
         }
 
         .project-overlay span {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             text-shadow: 0 0 10px #000;
         }
@@ -358,20 +366,76 @@
         .project-info p {
             color: #CCCCCC;
             line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--neon-cyan);
         }
 
         /* ==================== Contact 섹션 ==================== */
         .contact-container {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .contact-info {
-            font-size: 1.5rem;
+        .contact-intro {
+            font-size: 1.3rem;
+            color: var(--neon-yellow);
             margin-bottom: 40px;
+            text-shadow: 0 0 5px var(--neon-yellow);
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
             color: var(--neon-cyan);
             text-shadow: 0 0 5px var(--neon-cyan);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            min-width: 40px;
         }
 
         .social-links {
@@ -379,6 +443,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
+            margin-top: 50px;
         }
 
         .social-link {
@@ -447,17 +512,13 @@
                 font-size: 2rem;
             }
 
+            .about-container {
+                flex-direction: column;
+            }
+
             .about-image {
                 width: 180px;
                 height: 180px;
-            }
-
-            .about-name {
-                font-size: 2rem;
-            }
-
-            .about-role {
-                font-size: 1.1rem;
             }
 
             section {
@@ -468,9 +529,21 @@
                 grid-template-columns: 1fr;
             }
 
+            .skills-tags {
+                gap: 15px;
+            }
+
             .skill-tag {
-                font-size: 1rem;
                 padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .contact-item {
+                font-size: 1.1rem;
+            }
+
+            .contact-icon {
+                font-size: 1.5rem;
             }
         }
 
@@ -484,12 +557,12 @@
             }
 
             .about-image {
-                width: 150px;
-                height: 150px;
+                width: 160px;
+                height: 160px;
             }
 
             .about-name {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
 
             .about-role {
@@ -503,8 +576,14 @@
             }
 
             .skill-tag {
-                font-size: 0.9rem;
                 padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .contact-item {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -528,7 +607,7 @@
         <div class="about-container">
             <div class="about-profile">
                 <div class="about-image">
-                    <img src="images/profile.jpg" alt="Jeongho Shin">
+                    <img src="images/profile.jpg" alt="Jeongho Shin Profile">
                 </div>
                 <h3 class="about-name">신정호</h3>
                 <p class="about-role">UX/UI Designer & Educator</p>
@@ -536,8 +615,7 @@
             </div>
             <div class="about-text">
                 <p>안녕하세요! 사용자 경험을 디자인하는 신정호입니다.</p>
-                <p>10년 이상의 실무 경험을 바탕으로 매년 200명 이상의 디자이너를 교육해왔습니다. 복잡한 문제를 간단하고 아름답게 해결하는 것을 좋아합니다.</p>
-                <p>더 많은 사람들이 보다 좋은 환경에서 더 나은 삶을 살 수 있도록 돕고 싶습니다.</p>
+                <p>10년 이상의 실무 경험을 바탕으로 200명 이상의 디자이너를 교육해왔습니다. 복잡한 문제를 간단하고 아름답게 해결하는 것을 좋아합니다.</p>
             </div>
         </div>
     </section>
@@ -550,7 +628,9 @@
             <span class="skill-tag">Design Thinking</span>
             <span class="skill-tag">Figma</span>
             <span class="skill-tag">Sketch</span>
+            <span class="skill-tag">Adobe XD</span>
             <span class="skill-tag">User Research</span>
+            <span class="skill-tag">Prototyping</span>
             <span class="skill-tag">Team Leadership</span>
         </div>
     </section>
@@ -561,53 +641,44 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://via.placeholder.com/400x250/FF006E/FFFFFF?text=Project+1" alt="Project 1">
+                    <img src="images/project01.jpg" alt="모바일 뱅킹 앱 리뉴얼">
                     <div class="project-overlay">
                         <span>View Project</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>모바일 앱 리디자인</h3>
-                    <p>사용자 경험을 개선하기 위한 전면 리디자인 프로젝트. 직관적인 네비게이션과 현대적인 UI로 사용성을 30% 향상시켰습니다.</p>
+                    <h3>모바일 뱅킹 앱 리뉴얼</h3>
+                    <p>사용자 경험을 개선하기 위한 모바일 뱅킹 앱 전면 리디자인 프로젝트. 복잡한 금융 기능을 직관적인 UI로 재구성하여 사용자 만족도 40% 향상.</p>
+                    <p class="project-tech">사용 기술: Figma, User Testing, Design System</p>
+                    <a href="https://example.com" class="project-link" target="_blank">프로젝트 보기 →</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://via.placeholder.com/400x250/00F0FF/000000?text=Project+2" alt="Project 2">
+                    <img src="images/project02.jpg" alt="AI 기반 학습 플랫폼">
                     <div class="project-overlay">
                         <span>View Project</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>대시보드 UI/UX</h3>
-                    <p>데이터 시각화에 중점을 둔 관리자 대시보드 디자인. 복잡한 정보를 직관적으로 표현하여 업무 효율성을 증대시켰습니다.</p>
+                    <h3>AI 기반 학습 플랫폼</h3>
+                    <p>개인 맞춤형 학습 경험을 제공하는 교육 플랫폼 디자인. AI 추천 알고리즘과 조화로운 인터페이스 설계로 학습 완료율 증가.</p>
+                    <p class="project-tech">사용 기술: Sketch, Prototyping, A/B Testing</p>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://via.placeholder.com/400x250/FFD60A/000000?text=Project+3" alt="Project 3">
+                    <img src="images/project03.jpg" alt="기업 대시보드 시스템">
                     <div class="project-overlay">
                         <span>View Project</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>브랜드 아이덴티티</h3>
-                    <p>스타트업을 위한 브랜드 아이덴티티 및 디자인 시스템 구축. 일관성 있는 비주얼 언어로 브랜드 인지도를 강화했습니다.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://via.placeholder.com/400x250/8B00FF/FFFFFF?text=Project+4" alt="Project 4">
-                    <div class="project-overlay">
-                        <span>View Project</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>웹사이트 리뉴얼</h3>
-                    <p>반응형 웹사이트 리뉴얼 프로젝트. 최신 디자인 트렌드를 반영하고 모바일 최적화로 전환율을 향상시켰습니다.</p>
+                    <h3>기업 대시보드 시스템</h3>
+                    <p>복잡한 데이터를 시각화하는 B2B 대시보드 UI/UX 디자인. 사용자 리서치 기반으로 정보 구조를 최적화하여 업무 효율성 증대.</p>
+                    <p class="project-tech">사용 기술: Adobe XD, Data Visualization</p>
                 </div>
             </div>
         </div>
@@ -617,7 +688,25 @@
     <section id="contact">
         <h2>Contact</h2>
         <div class="contact-container">
-            <p class="contact-info">📧 jeongho.shin@example.com</p>
+            <p class="contact-intro">프로젝트 협업이나 강의 문의는 언제든 환영합니다!</p>
+            
+            <div class="contact-info">
+                <a href="mailto:jeongho.shin@gmail.com" class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>jeongho.shin@gmail.com</span>
+                </a>
+                
+                <a href="tel:010-4603-0213" class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>010-4603-0213</span>
+                </a>
+                
+                <a href="https://triz.kr" class="contact-item" target="_blank">
+                    <span class="contact-icon">🌐</span>
+                    <span>triz.kr</span>
+                </a>
+            </div>
+
             <div class="social-links">
                 <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn">
                     in
@@ -666,16 +755,9 @@
             }
         });
 
-        // 스킬 태그 동적 효과
-        document.querySelectorAll('.skill-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', function() {
-                const randomRotate = Math.random() * 10 - 5;
-                this.style.transform = `translateY(-5px) scale(1.1) rotate(${randomRotate}deg)`;
-            });
-            
-            tag.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
-            });
+        // 스킬 태그 랜덤 애니메이션
+        document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+            tag.style.animationDelay = `${index * 0.1}s`;
         });
 
         // 프로젝트 카드 동적 효과
@@ -688,8 +770,8 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
                 
                 this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
             });
@@ -733,6 +815,18 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Contact 아이템 순차 애니메이션
+        document.querySelectorAll('.contact-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, 200 * index);
+        });
     </script>
 </body>
 </html>
