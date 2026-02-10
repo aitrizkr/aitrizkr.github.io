@@ -622,20 +622,34 @@
         </div>
     </div>
 
-<section style="padding: 4rem 2rem; background: #f8f9fa;">
+<!-- Guestbook -->    
+<section style="padding: 4rem 2rem; background: #f8fafc;">
     <div class="container" style="max-width: 900px; margin: 0 auto;">
-        <!-- 탭 버튼 -->
+        <!-- 탭 헤더 -->
         <div style="text-align: center; margin-bottom: 2rem;">
-            <button onclick="showTab('team')" id="teamTab" style="padding: 1rem 2rem; margin: 0 0.5rem; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600;">
-                우리 팀 방명록
-            </button>
-            <button onclick="showTab('all')" id="allTab" style="padding: 1rem 2rem; margin: 0 0.5rem; background: #e2e8f0; color: #64748b; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600;">
-                전체 방명록
-            </button>
+            <h2 style="font-size: 2rem; font-weight: 700; color: #1e293b; margin-bottom: 2rem;">
+                💬 방명록
+            </h2>
+            
+            <div style="display: inline-flex; background: white; padding: 0.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); gap: 0.5rem;">
+                <button onclick="switchGuestbook('team')" id="teamTabBtn" 
+                        style="padding: 0.75rem 2rem; border: none; border-radius: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
+                    💌 우리 팀
+                </button>
+                <button onclick="switchGuestbook('all')" id="allTabBtn"
+                        style="padding: 0.75rem 2rem; border: none; border-radius: 8px; background: transparent; color: #64748b; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
+                    🎉 전체
+                </button>
+            </div>
         </div>
         
         <!-- 팀 방명록 -->
-        <div id="teamGuestbook" style="background: white; padding: 2rem; border-radius: 12px;">
+        <div id="teamGuestbook" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <div style="text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f1f5f9;">
+                <p style="color: #64748b; font-size: 1rem;">
+                    우리 팀에게 특별한 메시지를 남겨주세요 ✨
+                </p>
+            </div>
             <script src="https://utteranc.es/client.js"
                     repo="aitrizkr/comments"
                     issue-term="pathname"
@@ -646,7 +660,12 @@
         </div>
         
         <!-- 전체 방명록 -->
-        <div id="allGuestbook" style="display: none; background: white; padding: 2rem; border-radius: 12px;">
+        <div id="allGuestbook" style="display: none; background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <div style="text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f1f5f9;">
+                <p style="color: #64748b; font-size: 1rem;">
+                    모든 참가팀과 함께하는 공간입니다 🙌
+                </p>
+            </div>
             <script src="https://utteranc.es/client.js"
                     repo="aitrizkr/comments"
                     issue-number="3"
@@ -659,24 +678,28 @@
 </section>
 
 <script>
-function showTab(tab) {
-    const teamTab = document.getElementById('teamTab');
-    const allTab = document.getElementById('allTab');
+function switchGuestbook(type) {
+    const teamTab = document.getElementById('teamTabBtn');
+    const allTab = document.getElementById('allTabBtn');
     const teamGuestbook = document.getElementById('teamGuestbook');
     const allGuestbook = document.getElementById('allGuestbook');
     
-    if (tab === 'team') {
-        teamTab.style.background = '#667eea';
+    if (type === 'team') {
+        // 팀 탭 활성화
+        teamTab.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         teamTab.style.color = 'white';
-        allTab.style.background = '#e2e8f0';
+        allTab.style.background = 'transparent';
         allTab.style.color = '#64748b';
+        
         teamGuestbook.style.display = 'block';
         allGuestbook.style.display = 'none';
     } else {
-        teamTab.style.background = '#e2e8f0';
+        // 전체 탭 활성화
+        teamTab.style.background = 'transparent';
         teamTab.style.color = '#64748b';
-        allTab.style.background = '#667eea';
+        allTab.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         allTab.style.color = 'white';
+        
         teamGuestbook.style.display = 'none';
         allGuestbook.style.display = 'block';
     }
