@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- ===== 메타태그 및 SEO ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리에이터스 (CREATORS) - 창의적인 팀 포트폴리오</title>
+    <meta name="description" content="우리의 창의력은 한계가 없다 - 상상을 현실로!">
+    <meta name="keywords" content="크리에이터스, CREATORS, 창의성, 협업, 혁신, Creativity, Collaboration, Innovation">
+    
+    <!-- Open Graph 메타태그 -->
+    <meta property="og:title" content="크리에이터스 (CREATORS)">
+    <meta property="og:description" content="우리의 창의력은 한계가 없다 - 상상을 현실로!">
+    <meta property="og:image" content="team.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- ===== 폰트 로드 ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS 변수 정의 (다크 모드 테마) ===== */
+        :root {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #2D2D2D;
+            --bg-tertiary: #3A3A3A;
+            --accent: #6366F1;
+            --accent-light: #818CF8;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #6B6B6B;
+            --timeline-line: #4A4A4A;
+            
+            /* 타이포그래피 */
+            --font-display: 'Syne', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-body: 'Noto Sans KR', sans-serif;
+            
+            /* 간격 */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            --space-2xl: 10rem;
+            
+            /* 트랜지션 (엘레강트 플로우) */
+            --ease-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --duration-fast: 0.3s;
+            --duration-normal: 0.6s;
+            --duration-slow: 1s;
+        }
+        
+        /* ===== 기본 리셋 및 스타일 ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* ===== 스크롤바 커스텀 ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+        
+        /* ===== 배경 그레인 텍스처 ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        /* ===== 네비게이션 ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--space-md);
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color var(--duration-fast) var(--ease-smooth);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--duration-fast) var(--ease-smooth);
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* 모바일 메뉴 버튼 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all var(--duration-fast) var(--ease-smooth);
+        }
+        
+        /* ===== 히어로 섹션 ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: var(--space-2xl) var(--space-md);
+            overflow: hidden;
+        }
+        
+        /* 히어로 배경 그라디언트 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, var(--accent-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(129, 140, 248, 0.15) 0%, transparent 40%);
+            animation: heroGradient 15s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes heroGradient {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(5deg) scale(1.1); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            z-index: 1;
+        }
+        
+        /* 팀 사진 */
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: var(--space-lg);
+            border: 4px solid var(--accent);
+            box-shadow: 
+                0 0 60px var(--accent-glow),
+                0 20px 60px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: heroImageIn 1.2s var(--ease-elegant) 0.3s forwards;
+        }
+        
+        @keyframes heroImageIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* 팀 이름 */
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            line-height: 1.1;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 50%, var(--text-primary) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite, titleIn 1s var(--ease-elegant) 0.5s both;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes titleIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-elegant) 0.7s forwards;
+        }
+        
+        /* 슬로건 */
+        .hero-slogan {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+            padding: var(--space-sm) var(--space-md);
+            border-left: 3px solid var(--accent);
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            display: inline-block;
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-elegant) 0.9s forwards;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 스크롤 인디케이터 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-md);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-elegant) 1.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .scroll-indicator span {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--text-muted);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .scroll-indicator .mouse::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: scrollMouse 2s var(--ease-elegant) infinite;
+        }
+        
+        @keyframes scrollMouse {
+            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.3; transform: translateX(-50%) translateY(12px); }
+        }
+        
+        /* ===== 타임라인 컨테이너 ===== */
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+            position: relative;
+        }
+        
+        /* 타임라인 중앙선 */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                var(--timeline-line) 5%,
+                var(--timeline-line) 95%,
+                transparent 100%
+            );
+            transform: translateX(-50%);
+        }
+        
+        /* ===== 섹션 공통 스타일 ===== */
+        section {
+            padding: var(--space-xl) 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: var(--space-xs);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--duration-normal) var(--ease-elegant) 0.1s;
+        }
+        
+        .section-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--duration-normal) var(--ease-elegant) 0.2s;
+        }
+        
+        /* 애니메이션 트리거 클래스 */
+        .in-view .section-number,
+        .in-view .section-title,
+        .in-view .section-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== 타임라인 노드 ===== */
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            z-index: 10;
+            transition: all var(--duration-fast) var(--ease-smooth);
+        }
+        
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity var(--duration-fast) var(--ease-smooth);
+        }
+        
+        .timeline-node.active::before {
+            opacity: 1;
+        }
+        
+        .timeline-node.active {
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        /* ===== 핵심 가치 섹션 ===== */
+        #values {
+            padding-top: var(--space-2xl);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .value-card {
+            background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .in-view .value-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .in-view .value-card:nth-child(1) { transition-delay: 0.1s; }
+        .in-view .value-card:nth-child(2) { transition-delay: 0.2s; }
+        .in-view .value-card:nth-child(3) { transition-delay: 0.3s; }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border-radius: 50%;
+            font-size: 2.5rem;
+        }
+        
+        .value-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .value-title-kr {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-light);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .value-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* ===== 팀원 소개 섹션 ===== */
+        #team {
+            padding-top: var(--space-2xl);
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .member-card {
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .in-view .member-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .in-view .member-card:nth-child(1) { transition-delay: 0.1s; }
+        .in-view .member-card:nth-child(2) { transition-delay: 0.2s; }
+        .in-view .member-card:nth-child(3) { transition-delay: 0.3s; }
+        .in-view .member-card:nth-child(4) { transition-delay: 0.4s; }
+        .in-view .member-card:nth-child(5) { transition-delay: 0.5s; }
+        .in-view .member-card:nth-child(6) { transition-delay: 0.6s; }
+        
+        .member-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: var(--space-md);
+        }
+        
+        .member-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(26, 26, 26, 0.9) 0%,
+                transparent 50%
+            );
+            z-index: 1;
+            opacity: 0;
+            transition: opacity var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .member-card:hover .member-image-wrapper::before {
+            opacity: 1;
+        }
+        
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .member-card:hover .member-image {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            text-align: center;
+        }
+        
+        .member-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+            transition: color var(--duration-fast) var(--ease-smooth);
+        }
+        
+        .member-card:hover .member-name {
+            color: var(--accent-light);
+        }
+        
+        .member-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* ===== 방명록 섹션 ===== */
+        #guestbook {
+            padding-top: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+        }
+        
+        .guestbook-wrapper {
+            max-width: 800px;
+            margin: var(--space-lg) auto 0;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all var(--duration-normal) var(--ease-elegant);
+        }
+        
+        .in-view .guestbook-wrapper {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== 푸터 ===== */
+        footer {
+            background: var(--bg-secondary);
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-slogan {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .footer-copyright a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color var(--duration-fast) var(--ease-smooth);
+        }
+        
+        .footer-copyright a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* ===== 반응형 디자인 ===== */
+        
+        /* 태블릿 */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .values-grid .value-card:nth-child(3) {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-node {
+                left: 30px;
+            }
+        }
+        
+        /* 모바일 */
+        @media (max-width: 768px) {
+            :root {
+                --space-lg: 3rem;
+                --space-xl: 4rem;
+                --space-2xl: 6rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: var(--space-md);
+                gap: var(--space-sm);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid .value-card:nth-child(3) {
+                max-width: none;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .timeline-line,
+            .timeline-node {
+                display: none;
+            }
+            
+            .guestbook-wrapper {
+                padding: var(--space-md);
+            }
+        }
+        
+        /* 작은 모바일 */
+        @media (max-width: 480px) {
+            .hero-title {
+                letter-spacing: 0.08em;
+            }
+            
+            .value-card {
+                padding: var(--space-md);
+            }
+        }
+        
+        /* ===== 유틸리티 클래스 ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 네비게이션 ===== -->
+    <nav>
+        <a href="#" class="nav-logo">CREATORS</a>
+        <ul class="nav-links">
+            <li><a href="#values">VALUES</a></li>
+            <li><a href="#team">TEAM</a></li>
+            <li><a href="#guestbook">GUESTBOOK</a></li>
+        </ul>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    
+    <!-- ===== 히어로 섹션 ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <!-- 팀 사진 -->
+            <img 
+                src="team.jpg" 
+                alt="크리에이터스 팀 사진" 
+                class="hero-image"
+                onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=faces'"
+            >
+            <!-- 팀 이름 -->
+            <h1 class="hero-title">CREATORS</h1>
+            <p class="hero-subtitle">크리에이터스</p>
+            <!-- 팀 슬로건 -->
+            <p class="hero-slogan">우리의 창의력은 한계가 없다 — 상상을 현실로!</p>
+        </div>
+        
+        <!-- 스크롤 인디케이터 -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="mouse"></div>
+        </div>
+    </section>
+    
+    <!-- ===== 타임라인 컨테이너 ===== -->
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- ===== 핵심 가치 섹션 ===== -->
+        <section id="values" class="observe-section">
+            <div class="timeline-node"></div>
+            <div class="section-header">
+                <p class="section-number">01</p>
+                <h2 class="section-title">TEAM VALUES</h2>
+                <p class="section-subtitle">Our Core Principles</p>
+            </div>
+            
+            <div class="values-grid">
+                <!-- 창의성 -->
+                <article class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">CREATIVITY</h3>
+                    <p class="value-title-kr">창의성</p>
+                    <p class="value-desc">기존의 틀을 깨고 새로운 관점에서 문제를 해결합니다.</p>
+                </article>
+                
+                <!-- 협업 -->
+                <article class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">COLLABORATION</h3>
+                    <p class="value-title-kr">협업</p>
+                    <p class="value-desc">각자의 강점을 공유하며 시너지를 극대화합니다.</p>
+                </article>
+                
+                <!-- 혁신 -->
+                <article class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3 class="value-title">INNOVATION</h3>
+                    <p class="value-title-kr">혁신</p>
+                    <p class="value-desc">최신 트렌드를 선도하며 끊임없이 발전합니다.</p>
+                </article>
+            </div>
+        </section>
+        
+        <!-- ===== 팀원 소개 섹션 ===== -->
+        <section id="team" class="observe-section">
+            <div class="timeline-node"></div>
+            <div class="section-header">
+                <p class="section-number">02</p>
+                <h2 class="section-title">TEAM MEMBERS</h2>
+                <p class="section-subtitle">Meet Our Creative Minds</p>
+            </div>
+            
+            <div class="members-grid">
+                <!-- 팀원 1 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member01.jpg" 
+                            alt="한지훈" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">한지훈</h3>
+                        <p class="member-desc">IT 전공, 코딩으로 미래를 디자인합니다</p>
+                    </div>
+                </article>
+                
+                <!-- 팀원 2 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member02.jpg" 
+                            alt="윤세아" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">윤세아</h3>
+                        <p class="member-desc">경영학과, 스타트업의 꿈을 키우고 있어요</p>
+                    </div>
+                </article>
+                
+                <!-- 팀원 3 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member03.jpg" 
+                            alt="오현우" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">오현우</h3>
+                        <p class="member-desc">영상 제작 전공, 렌즈 너머 세상을 담아요</p>
+                    </div>
+                </article>
+                
+                <!-- 팀원 4 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member04.jpg" 
+                            alt="김다인" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">김다인</h3>
+                        <p class="member-desc">광고홍보학과, 브랜딩 전문가를 꿈꿔요!</p>
+                    </div>
+                </article>
+                
+                <!-- 팀원 5 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member05.jpg" 
+                            alt="정우진" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">정우진</h3>
+                        <p class="member-desc">순수미술 전공, 붓으로 감정을 그립니다</p>
+                    </div>
+                </article>
+                
+                <!-- 팀원 6 -->
+                <article class="member-card">
+                    <div class="member-image-wrapper">
+                        <img 
+                            src="member06.jpg" 
+                            alt="이수빈" 
+                            class="member-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face'"
+                        >
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">이수빈</h3>
+                        <p class="member-desc">산업디자인과, 심플함 속 완벽함 추구</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- ===== 방명록 섹션 ===== -->
+        <section id="guestbook" class="observe-section">
+            <div class="timeline-node"></div>
+            <div class="section-header">
+                <p class="section-number">03</p>
+                <h2 class="section-title">GUESTBOOK</h2>
+                <p class="section-subtitle">Leave Your Message</p>
+            </div>
+            
+            <div class="guestbook-wrapper">
+                <!-- Guestbook -->
+                <script src="https://utteranc.es/client.js"
+                        repo="aitrizkr/aiws_sm2026"
+                        issue-term="pathname"
+                        label="방명록"
+                        theme="github-dark"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+    </div>
+    
+    <!-- ===== 푸터 ===== -->
+    <footer>
+        <div class="footer-logo">CREATORS</div>
+        <p class="footer-slogan">우리의 창의력은 한계가 없다 — 상상을 현실로!</p>
+        <p class="footer-copyright">
+            © 2026 크리에이터스 (CREATORS). Powered by <a href="https://ai.triz.kr" target="_blank" rel="noopener noreferrer">AI Portfolio Workshop</a>.
+        </p>
+    </footer>
+    
+    <!-- ===== 자바스크립트 ===== -->
+    <script>
+        /**
+         * 크리에이터스 팀 웹사이트 JavaScript
+         * - 스크롤 기반 애니메이션 (Intersection Observer)
+         * - 모바일 메뉴 토글
+         * - 부드러운 스크롤 네비게이션
+         * - 타임라인 노드 활성화
+         */
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== Intersection Observer 설정 (스크롤 애니메이션) =====
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        
+                        // 타임라인 노드 활성화
+                        const node = entry.target.querySelector('.timeline-node');
+                        if (node) {
+                            node.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // 관찰할 섹션 등록
+            document.querySelectorAll('.observe-section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // ===== 모바일 메뉴 토글 =====
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // 햄버거 아이콘 애니메이션
+                const spans = menuToggle.querySelectorAll('span');
+                if (navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                }
+            });
+            
+            // ===== 네비게이션 링크 클릭 시 메뉴 닫기 =====
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                });
+            });
+            
+            // ===== 부드러운 스크롤 =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // ===== 스크롤 시 네비게이션 스타일 변경 =====
+            let lastScroll = 0;
+            const nav = document.querySelector('nav');
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 100) {
+                    nav.style.background = 'rgba(26, 26, 26, 0.95)';
+                } else {
+                    nav.style.background = 'rgba(26, 26, 26, 0.85)';
+                }
+                
+                lastScroll = currentScroll;
+            }, { passive: true });
+            
+            // ===== 스크롤 인디케이터 숨김 =====
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 200) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.pointerEvents = 'none';
+                } else {
+                    scrollIndicator.style.opacity = '';
+                    scrollIndicator.style.pointerEvents = '';
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
